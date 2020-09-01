@@ -1,0 +1,209 @@
+/*=============================================================================
+
+  File:         /node_modules/rwt-xenotools/rwt-xenotools.css
+  Language:     CSS
+  Copyright:    Read Write Tools © 2020
+  License:      MIT
+  Initial date: Aug 27, 2020
+  Contents:     Search popular tech websites for questions and answers related to this document
+
+=============================================================================*/
+
+:host {
+	--pure-black: #000;
+	--nav-black: #111;
+	--light-black: #171717;
+	--medium-black: #222;
+	--black: #333;
+	--dark-gray: #555;
+	--gray: #777;
+	--white: #ccc;
+	--pure-white: #fff;
+	--js-blue: #76afe8;
+	--title-blue: #42affa;
+	--yellow: #ffffa4;
+	--red: #ff3d3d;
+		
+	/* custom element decorations */
+	--color: var(--white);
+	--accent-color1: var(--pure-white);
+	
+	--background-color: var(--nav-black);
+	--accent-background1: var(--pure-black);
+	--accent-background2: var(--medium-black);
+	--accent-background3: var(--light-black);
+	--accent-background4: var(--title-blue);
+	
+	--border-color1: var(--gray);	
+	--border-color2: var(--pure-white);	
+	--border-color3: var(--pure-black);	
+
+	/* custom element variables */	
+	--height: 11rem;
+	--width: 30rem;
+	--bottom: 3rem;
+	
+	/* calculated sizing */
+	--left: calc((100% - var(--width))/2);
+	--inner-width: calc(var(--width) - 2px);
+	--iconbox-height: 3.5rem;
+	--criteriabox-height: calc(var(--height) - var(--iconbox-height) - 3px);
+	--group-width: 9rem;
+	--go-width: 3rem;
+}
+
+:host {
+	font-size: 11pt;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: normal;
+}
+
+#panel {
+	position: fixed;
+	height: var(--height);
+	width: var(--width);
+	background-color: var(--accent-background2);
+	border: 1px solid var(--border-color3);
+	border-radius: 10px 10px 0 0;
+	box-shadow: -2px -2px 2px var(--accent-background3), 5px 5px 8px var(--accent-background3);
+	box-sizing: border-box;
+}
+#panel:focus {
+	outline: 1px solid #f00;
+}
+#panel.hide-menu {
+	display: none;
+}
+#panel.show-menu {
+	display: block;
+	animation-duration: 250ms;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+	animation-name: bottom-center;
+	bottom: var(--bottom);
+	left: var(--left);
+}
+
+@keyframes bottom-center {
+  0% {
+	bottom: calc(0px - var(--height)); 
+  }
+  100% {
+	bottom: var(--bottom);
+  }
+}	
+
+/* ---------- items ---------- */
+#iconbox,
+#criteriabox {
+	position: absolute;
+	display: flex;
+	width: var(--inner-width);
+	justify-content: space-around;
+	align-items: center;
+	margin: 0;
+	box-sizing: border-box;
+}
+#iconbox {
+	top: 0;
+	left: 0;
+	padding: 0 10px;
+	height: var(--iconbox-height);
+	background-color: var(--accent-background2);
+	border-bottom: 1px solid var(--border-color2);
+	border-radius: 10px 10px 0 0;
+}
+#icon-group1,
+#icon-group2,
+#icon-group3 {
+	display: flex;
+	justify-content: center;
+	width: var(--group-width);
+	margin: 0;
+}
+a {
+	margin: 0 4px;
+}
+a.active-host {
+	outline: 1px solid var(--white);
+	outline-offset: 0;
+	background-color: var(--background-color);
+}
+svg {
+	width: 2rem;
+	height: 2rem;
+	margin: 2px;
+	cursor: pointer;
+	border: 1px solid var(--accent-background2);
+	border-radius: 15%;
+	box-shadow: 4px 4px 6px var(--accent-background1);
+}
+svg:hover {
+	border-width: 2px 0 0 2px;
+}
+#criteriabox {
+	top: calc(var(--iconbox-height) + 1px);
+	left: 0;
+	height: var(--criteriabox-height);
+	background-color: var(--accent-background3);
+	border-top: 1px solid var(--border-color3);
+	padding-right: 6px;
+}
+#criteriabox div {
+	display: flex;
+	flex-direction: column;
+	width: calc(100% - var(--go-width));
+}
+#criteriabox p {
+	display: flex;
+	font-family: 'SourceSans Pro', sans-serif;
+	font-size: 1rem;
+	font-weight: 700;
+	color: var(--color);
+	width: 100%;
+	margin: 4px 0;
+	text-align: center;
+	align-items: center;
+	cursor: default;
+}
+#label1,
+#label2,
+#label3 {
+	width: 20%;
+	flex-grow: 1;
+	text-align: right;
+	padding-right: 4px;
+}
+#criteria1,
+#criteria2,
+#url {
+	width: 80%;
+	flex-grow: 5;
+	color: var(--color);
+	background-color: var(--background-color);
+    border: 1px solid var(--border-color1);
+    padding: 4px 6px;
+}
+#go {
+	text-decoration: none;
+	font-size: 1.5rem;
+	text-align: center;
+	margin-left: 12px;
+	padding: 2px 6px;
+	color: var(--accent-color1);
+	background-color: var(--accent-background4);
+	width: var(--go-width);
+	height: 2rem;
+	border: 1px solid var(--border-color3);
+	border-radius: 15%;
+	box-shadow: 4px 4px 6px var(--accent-background1);
+}
+#go:hover {
+	border-width: 2px 0 0 2px;
+}
+#go:focus,
+#go:active {
+	outline: 1px solid var(--pure-white);
+	outline-offset: -5px;
+	border-width: 1px;
+}
