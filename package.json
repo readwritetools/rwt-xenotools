@@ -1,7 +1,7 @@
 {
   "name": "rwt-xenotools",
-  "version": "1.0.18",
-  "description": "Search popular tech websites for questions and answers related to this document, a W3C standard Web Component",
+  "version": "1.0.0",
+  "description": "Search popular tech forums for questions and answers related to this document, a W3C standard Web Component",
   "author": "Read Write Tools",
   "license": "MIT",
   "module": "rwt-xenotools.js",
