@@ -35,17 +35,16 @@
 ### Motivation
 
 Sometimes visitors are unsatisfied with the information provided in your
-document and need to further research the topic.
-
-As a convenience to your visitors you can provide quick links to external forums
-that may have additional information about the your document's main topic.
+document and need to further research the topic. As a convenience to your
+visitors you can provide quick links to external forums that may have additional
+information about the your document's main topic.
 
 The <span>rwt-xenotools</span> web component facilitates this by
 keeping a social-media style linkbar hidden at the bottom of the page until the
 user needs it.
 
-The activated linkbar, slides over the page content, showing a collection of
-icons associated with popular tech forums.
+When activated, the linkbar slides over the page content, showing a collection
+of icons associated with popular tech forums.
 
 Activation may also be initiated through the component's `toggleMenu` method or
 through its event interface.
@@ -54,7 +53,7 @@ The component has these features:
 
    * Each third-party link is prefilled with a query value that is determined by the
       document's `<meta content=xenotools:query>` value.
-   * When appropriate, some links are prefilled with a tagged value that is
+   * When appropriate, some links are prefilled with a hashtag values that are
       determined by the document's `<meta content=xenotools:tagged>` value.
    * The Reddit link uses any value provided by the document's `<meta content=xenotools:subreddit>`
 value.
@@ -152,9 +151,9 @@ bottom, width and height variables.
 
 ```css
 rwt-xenotools {
+    --bottom: 3rem;
     --height: 11rem;
     --width: 30rem;
-    --bottom: 3rem;
 }
 ```
 
