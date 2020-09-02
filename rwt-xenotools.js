@@ -35,7 +35,7 @@ export default class RwtXenotools extends HTMLElement {
 		
 		//meta <HEAD> tags
 		this.metaQuery = '';
-		this.metaTagged = '';
+		this.metaTags = '';
 		this.metaSubreddit = '';
 		this.metaLanguage = '';
 		
@@ -211,13 +211,19 @@ export default class RwtXenotools extends HTMLElement {
 			if (this.metaQuery == null)
 				this.metaQuery = '';
 		}
-		this.query = this.metaQuery;
+		var phrases = this.metaQuery.split(',');		// split into phrases, removing the comma
+		for (let phrase of phrases) {
+			phrase = phrase.trim();						// remove any leading/trailing spaces
+			if (phrase.indexOf(' ') != -1)				// if this is a phrase, not a word, wrap it in quotes
+				phrase = `"${phrase}"`;
+		}
+		this.query = phrases.join(' ');					// reconnect, but without commas
 		
-		var meta = document.querySelector('meta[name="xenotools:tagged"]')
+		var meta = document.querySelector('meta[name="xenotools:tags"]')
 		if (meta != null) {
-			this.metaTagged = meta.getAttribute('content');
-			if (this.metaTagged == null)
-				this.metaTagged = '';
+			this.metaTags = meta.getAttribute('content');
+			if (this.metaTags == null)
+				this.metaTags = '';
 		}
 
 		var meta = document.querySelector('meta[name="xenotools:subreddit"]')
@@ -316,7 +322,7 @@ export default class RwtXenotools extends HTMLElement {
 
 	onFocusStackoverflow(event) {
 		this.setActiveHost(event.currentTarget.id);
-		this.setCriteria('stackoverflow.com', 'query', this.query, 'tagged', this.metaTagged);
+		this.setCriteria('stackoverflow.com', 'query', this.query, 'tagged', this.metaTags);
 		this.determineURL();
 	}
 
@@ -334,7 +340,7 @@ export default class RwtXenotools extends HTMLElement {
 
 	onFocusTwitter(event) {
 		this.setActiveHost(event.currentTarget.id);
-		this.setCriteria('twitter.com', 'query', this.query, 'tagged', this.metaTagged);
+		this.setCriteria('twitter.com', 'query', this.query, 'tagged', this.metaTags);
 		this.determineURL();
 	}
 	
@@ -352,7 +358,7 @@ export default class RwtXenotools extends HTMLElement {
 
 	onFocusDev(event) {
 		this.setActiveHost(event.currentTarget.id);
-		this.setCriteria('dev.to', 'query', this.query, 'tagged', this.metaTagged);
+		this.setCriteria('dev.to', 'query', this.query, 'tagged', this.metaTags);
 		this.determineURL();
 	}	
 
