@@ -211,13 +211,15 @@ export default class RwtXenotools extends HTMLElement {
 			if (this.metaQuery == null)
 				this.metaQuery = '';
 		}
-		var phrases = this.metaQuery.split(',');		// split into phrases, removing the comma
-		for (let phrase of phrases) {
-			phrase = phrase.trim();						// remove any leading/trailing spaces
-			if (phrase.indexOf(' ') != -1)				// if this is a phrase, not a word, wrap it in quotes
+		var phrases = this.metaQuery.split(',');			// split into phrases, removing the comma
+		var shortList = new Array();
+		for (let i=0; i < phrases.length && i < 2; i++) {	// shortlist of first two keyword phrases only
+			let phrase = phrases[i].trim();					// remove any leading/trailing spaces
+			if (phrase.indexOf(' ') != -1)					// if this is a phrase, not a word, wrap it in quotes
 				phrase = `"${phrase}"`;
+			shortList.push(phrase);
 		}
-		this.query = phrases.join(' ');					// reconnect, but without commas
+		this.query = shortList.join(' ');					// reconnect, but without commas
 		
 		var meta = document.querySelector('meta[name="xenotools:tags"]')
 		if (meta != null) {
