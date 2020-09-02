@@ -1,6 +1,6 @@
 {
   "name": "rwt-xenotools",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Search popular tech forums for questions and answers related to this document, a W3C standard Web Component",
   "author": "Read Write Tools",
   "license": "MIT",
