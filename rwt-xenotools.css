@@ -42,6 +42,7 @@
 	--height: 11rem;
 	--width: 30rem;
 	--bottom: 3rem;
+	--z-index: 3;
 	
 	/* calculated sizing */
 	--left: calc((100% - var(--width))/2);
@@ -60,6 +61,7 @@
 
 #panel {
 	position: fixed;
+	z-index: var(--z-index);
 	height: var(--height);
 	width: var(--width);
 	background-color: var(--accent-background2);
