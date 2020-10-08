@@ -161,6 +161,7 @@ rwt-xenotools {
     --bottom: 3rem;
     --height: 11rem;
     --width: 30rem;
+    --z-index: 1;
 }
 ```
 
